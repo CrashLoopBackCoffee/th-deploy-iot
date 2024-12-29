@@ -33,6 +33,10 @@ class CloudflareConfig(StrictBaseModel):
     zone: str
 
 
+class MosquittoConfig(StrictBaseModel):
+    version: str
+
+
 class TargetConfig(StrictBaseModel):
     host: str
     user: str
@@ -42,6 +46,7 @@ class TargetConfig(StrictBaseModel):
 class ComponentConfig(StrictBaseModel):
     target: TargetConfig
     cloudflare: CloudflareConfig
+    mosquitto: MosquittoConfig
 
 
 class StackConfig(StrictBaseModel):
