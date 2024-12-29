@@ -1,0 +1,11 @@
+config:
+  iot:config:
+    target:
+      host: synology
+      user: tobias
+      root_dir: /volume2/docker
+    cloudflare:
+      email: tobias_henkel@gmx.de
+      api-key:
+        secure: AAABACD7DMlXm7wvQ60GXjmVtyOoAZLlGKhQbpKs1MgGwM/FzRWKTxpA0Q/1mrZ8VVUI8pr3P/0uXHvJLViONbre1CED
+      zone: tobiash.net
