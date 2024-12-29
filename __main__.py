@@ -4,6 +4,7 @@ import pulumi_docker as docker
 
 from iot.config import ComponentConfig
 from iot.mosquitto import create_mosquitto
+from iot.mqtt_exporter import create_mqtt_prometheus
 
 component_config = ComponentConfig.model_validate(p.Config().get_object('config'))
 
@@ -27,3 +28,4 @@ cloudflare_provider = cloudflare.Provider(
 network = docker.Network('iot', opts=opts)
 
 create_mosquitto(component_config, network, cloudflare_provider, opts)
+create_mqtt_prometheus(component_config, network, opts)

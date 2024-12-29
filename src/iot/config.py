@@ -37,6 +37,10 @@ class MosquittoConfig(StrictBaseModel):
     version: str
 
 
+class MqttPrometheusConfig(StrictBaseModel):
+    version: str
+
+
 class TargetConfig(StrictBaseModel):
     host: str
     user: str
@@ -47,6 +51,7 @@ class ComponentConfig(StrictBaseModel):
     target: TargetConfig
     cloudflare: CloudflareConfig
     mosquitto: MosquittoConfig
+    mqtt2prometheus: MqttPrometheusConfig
 
 
 class StackConfig(StrictBaseModel):
