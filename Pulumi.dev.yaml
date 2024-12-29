@@ -12,3 +12,6 @@ config:
     mosquitto:
       # renovate: datasource=github-releases packageName=eclipse-mosquitto/mosquitto versioning=semver
       version: 2.0.19
+    mqtt2prometheus:
+      # renovate: datasource=github-releases packageName=hikhvar/mqtt2prometheus versioning=semver
+      version: v0.1.7

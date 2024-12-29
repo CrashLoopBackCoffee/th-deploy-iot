@@ -1,5 +1,3 @@
-import pathlib
-
 import pulumi as p
 import pulumi_cloudflare as cloudflare
 import pulumi_command
@@ -7,18 +5,7 @@ import pulumi_docker as docker
 
 from iot.cloudflare import create_cloudflare_cname
 from iot.config import ComponentConfig
-from iot.utils import get_assets_path
-
-
-def directory_content(path: pathlib.Path) -> list[str]:
-    """
-    Hashes the contents of a directory.
-    """
-    contents = []
-    for file in path.rglob('*'):
-        if file.is_file():
-            contents.append(file.read_text())
-    return contents
+from iot.utils import directory_content, get_assets_path
 
 
 def create_mosquitto(
