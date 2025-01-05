@@ -1,5 +1,6 @@
 import pathlib
 
+import deploy_base.model
 import pydantic
 
 REPO_PREFIX = 'deploy-'
@@ -27,12 +28,6 @@ class PulumiSecret(StrictBaseModel):
         return str(self.secure)
 
 
-class CloudflareConfig(StrictBaseModel):
-    api_key: PulumiSecret | str = pydantic.Field(alias='api-key')
-    email: str
-    zone: str
-
-
 class MosquittoConfig(StrictBaseModel):
     version: str
 
@@ -49,7 +44,7 @@ class TargetConfig(StrictBaseModel):
 
 class ComponentConfig(StrictBaseModel):
     target: TargetConfig
-    cloudflare: CloudflareConfig
+    cloudflare: deploy_base.model.CloudflareConfig
     mosquitto: MosquittoConfig
     mqtt2prometheus: MqttPrometheusConfig
 
