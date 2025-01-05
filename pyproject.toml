@@ -85,6 +85,8 @@ exclude = [
     "node_modules",
     "venv",
 ]
+# We cannot setup deplou-base in github actions so far so ignore missing imports
+reportMissingImports = false
 reportUnnecessaryTypeIgnoreComment = true
 venv = ".venv"
 venvPath = "."
