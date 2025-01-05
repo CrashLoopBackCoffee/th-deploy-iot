@@ -7,7 +7,7 @@ config:
     cloudflare:
       email: tobias_henkel@gmx.de
       api-key:
-        secure: AAABACD7DMlXm7wvQ60GXjmVtyOoAZLlGKhQbpKs1MgGwM/FzRWKTxpA0Q/1mrZ8VVUI8pr3P/0uXHvJLViONbre1CED
+        ref: "op://Pulumi/Cloudflare Global API Key/password"
       zone: tobiash.net
     mosquitto:
       # renovate: datasource=github-releases packageName=eclipse-mosquitto/mosquitto versioning=semver
