@@ -20,6 +20,7 @@ jobs:
         uses: actions/checkout@v4
         with:
            repository: CrashLoopBackCoffee/th-deploy-base
+           ref: main
            path: deploy-base
            token: ${{ secrets.REPOS_READ_ONLY }}
 
