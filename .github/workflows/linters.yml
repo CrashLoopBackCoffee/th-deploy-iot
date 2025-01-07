@@ -16,6 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Checkout base repo
+        uses: actions/checkout@v4
+        with:
+           repository: CrashLoopBackCoffee/th-deploy-base
+           token: ${{ secrets.REPOS_READ_ONLY }}
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
