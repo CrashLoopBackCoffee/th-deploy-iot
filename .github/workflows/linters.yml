@@ -38,7 +38,6 @@ jobs:
       - name: Install dependencies
         working-directory: deploy-iot
         run: |
-          python -m pip install --upgrade pip poetry
           uv sync
 
       - name: Install grafana alloy
