@@ -14,6 +14,7 @@ def main():
 
     opts = p.ResourceOptions(provider=docker_provider)
 
+    assert component_config.cloudflare
     cloudflare_provider = cloudflare.Provider(
         'cloudflare',
         api_key=component_config.cloudflare.api_key.value,

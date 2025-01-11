@@ -14,6 +14,7 @@ def create_mqtt_prometheus_legacy(
     """
     Deploys mqtt exporter to the target host.
     """
+    assert component_config.target
     target_root_dir = component_config.target.root_dir
     target_host = component_config.target.host
     target_user = component_config.target.user
@@ -45,6 +46,7 @@ def create_mqtt_prometheus_legacy(
         triggers=[mqtt_prometheus_config, mqtt_prometheus_config_dir_resource.id],
     )
 
+    assert component_config.mqtt2prometheus
     image = docker.RemoteImage(
         'mqtt-prometheus',
         name=f'ghcr.io/hikhvar/mqtt2prometheus:{component_config.mqtt2prometheus.version}',
