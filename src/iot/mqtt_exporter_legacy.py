@@ -59,6 +59,14 @@ def create_mqtt_prometheus_legacy(
         image=image.image_id,
         name='mqtt2prometheus',
         ports=[{'internal': 9641, 'external': 9641}],
+        envs=[
+            p.Output.format(
+                'MQTT2PROM_MQTT_USER={}', component_config.mqtt2prometheus.username.value
+            ),
+            p.Output.format(
+                'MQTT2PROM_MQTT_PASSWORD={}', component_config.mqtt2prometheus.password.value
+            ),
+        ],
         volumes=[
             {
                 'host_path': f'{target_root_dir}/mqtt2prometheus-config/config.yaml',
