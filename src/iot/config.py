@@ -30,6 +30,8 @@ class PulumiSecret(StrictBaseModel):
 
 class MosquittoConfig(StrictBaseModel):
     version: str
+    hostname: str | None = None
+    passwords: list[str] = []
 
 
 class MqttPrometheusConfig(StrictBaseModel):
