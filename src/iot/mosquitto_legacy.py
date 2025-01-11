@@ -8,7 +8,7 @@ from iot.config import ComponentConfig
 from iot.utils import directory_content, get_assets_path
 
 
-def create_mosquitto(
+def create_mosquitto_legacy(
     component_config: ComponentConfig,
     network: docker.Network,
     cloudflare_provider: cloudflare.Provider,
