@@ -17,10 +17,12 @@ def create_mosquitto_legacy(
     """
     Deploys mosquitto to the target host.
     """
+    assert component_config.target
     target_root_dir = component_config.target.root_dir
     target_host = component_config.target.host
     target_user = component_config.target.user
 
+    assert component_config.cloudflare
     create_cloudflare_cname('mqtt', component_config.cloudflare.zone, cloudflare_provider)
 
     # Create mosquitto-config folder

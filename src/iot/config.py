@@ -30,6 +30,8 @@ class PulumiSecret(StrictBaseModel):
 
 class MosquittoConfig(StrictBaseModel):
     version: str
+    hostname: str | None = None
+    passwords: list[str] = []
 
 
 class MqttPrometheusConfig(StrictBaseModel):
@@ -43,10 +45,10 @@ class TargetConfig(StrictBaseModel):
 
 
 class ComponentConfig(StrictBaseModel):
-    target: TargetConfig
-    cloudflare: deploy_base.model.CloudflareConfig
+    target: TargetConfig | None = None
+    cloudflare: deploy_base.model.CloudflareConfig | None = None
     mosquitto: MosquittoConfig
-    mqtt2prometheus: MqttPrometheusConfig
+    mqtt2prometheus: MqttPrometheusConfig | None = None
 
 
 class StackConfig(StrictBaseModel):
