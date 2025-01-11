@@ -41,7 +41,6 @@ class Mqtt2Prometheus(p.ComponentResource):
             'json_parsing': {'separator': '.'},
         }
 
-        assert component_config.mqtt2prometheus
         mqtt_credentials = k8s.core.v1.Secret(
             'mqtt-credentials',
             string_data={
