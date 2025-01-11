@@ -162,6 +162,7 @@ class Mosquitto(p.ComponentResource):
                 'type': 'LoadBalancer',
                 'ports': [{'port': MQTT_PORT, 'target_port': 'mqtts'}],
                 'selector': deployment.spec.apply(lambda x: x['selector']['match_labels']),
+                'external_traffic_policy': 'Local',
             },
             opts=k8s_opts,
         )
