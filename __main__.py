@@ -3,8 +3,8 @@ import pulumi_cloudflare as cloudflare
 import pulumi_docker as docker
 
 from iot.config import ComponentConfig
-from iot.mosquitto import create_mosquitto
-from iot.mqtt_exporter import create_mqtt_prometheus
+from iot.mosquitto_legacy import create_mosquitto_legacy
+from iot.mqtt_exporter_legacy import create_mqtt_prometheus_legacy
 
 component_config = ComponentConfig.model_validate(p.Config().get_object('config'))
 
@@ -27,5 +27,5 @@ cloudflare_provider = cloudflare.Provider(
 # Create networks so we don't have to expose all ports on the host
 network = docker.Network('iot', opts=opts)
 
-create_mosquitto(component_config, network, cloudflare_provider, opts)
-create_mqtt_prometheus(component_config, network, opts)
+create_mosquitto_legacy(component_config, network, cloudflare_provider, opts)
+create_mqtt_prometheus_legacy(component_config, network, opts)

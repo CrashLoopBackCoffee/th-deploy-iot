@@ -6,7 +6,7 @@ from iot.config import ComponentConfig
 from iot.utils import directory_content, get_assets_path
 
 
-def create_mqtt_prometheus(
+def create_mqtt_prometheus_legacy(
     component_config: ComponentConfig,
     network: docker.Network,
     opts: p.ResourceOptions,
