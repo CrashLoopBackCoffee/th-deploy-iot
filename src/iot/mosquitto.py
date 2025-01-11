@@ -44,7 +44,6 @@ class Mosquitto(p.ComponentResource):
         )
         k8s_opts = p.ResourceOptions(provider=namespaced_provider, parent=self)
 
-        assert component_config.mosquitto.hostname
         certificate = k8s.apiextensions.CustomResource(
             'certificate',
             api_version='cert-manager.io/v1',

@@ -22,16 +22,9 @@ class StrictBaseModel(pydantic.BaseModel):
     model_config = {'extra': 'forbid'}
 
 
-class PulumiSecret(StrictBaseModel):
-    secure: pydantic.SecretStr
-
-    def __str__(self):
-        return str(self.secure)
-
-
 class MosquittoConfig(StrictBaseModel):
     version: str
-    hostname: str | None = None
+    hostname: str
     passwords: list[str] = []
 
 
@@ -49,17 +42,10 @@ class MqttPrometheusConfig(StrictBaseModel):
     instances: list[MqttPrometheusInstanceConfig] = []
 
 
-class TargetConfig(StrictBaseModel):
-    host: str
-    user: str
-    root_dir: str
-
-
 class ComponentConfig(StrictBaseModel):
-    target: TargetConfig | None = None
     cloudflare: deploy_base.model.CloudflareConfig | None = None
     mosquitto: MosquittoConfig
-    mqtt2prometheus: MqttPrometheusConfig | None = None
+    mqtt2prometheus: MqttPrometheusConfig
 
 
 class StackConfig(StrictBaseModel):

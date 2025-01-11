@@ -273,12 +273,8 @@ source = { editable = "." }
 dependencies = [
     { name = "pip" },
     { name = "pulumi" },
-    { name = "pulumi-cloudflare" },
-    { name = "pulumi-command" },
-    { name = "pulumi-docker" },
     { name = "pulumi-kubernetes" },
     { name = "pulumi-onepassword" },
-    { name = "pulumi-random" },
     { name = "pwdlib" },
     { name = "pydantic" },
     { name = "pyyaml" },
@@ -301,12 +297,8 @@ dev = [
 requires-dist = [
     { name = "pip", specifier = ">=24.3.1" },
     { name = "pulumi", specifier = "==3.144.1" },
-    { name = "pulumi-cloudflare", specifier = ">=5.44.0" },
-    { name = "pulumi-command", specifier = "==1.0.1" },
-    { name = "pulumi-docker", specifier = "==4.5.8" },
     { name = "pulumi-kubernetes", specifier = ">=4.19.0" },
     { name = "pulumi-onepassword", specifier = ">=1.1.3" },
-    { name = "pulumi-random", specifier = ">=4.16.8" },
     { name = "pwdlib", specifier = ">=0.2.1" },
     { name = "pydantic", specifier = ">=2.10.3" },
     { name = "pyyaml", specifier = ">=6.0.1" },
@@ -440,48 +432,6 @@ wheels = [
 ]
 
 [[package]]
-name = "pulumi-cloudflare"
-version = "5.45.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "parver" },
-    { name = "pulumi" },
-    { name = "semver" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/17/a4/ce7e38e1ae554cdd3d8b4723fd9e80dad982030b52bb643db8a735681cae/pulumi_cloudflare-5.45.0.tar.gz", hash = "sha256:2ca64d8e35a75455fc8067d4938f7fb48272179dce5c62372ade58e0c5b3ea83", size = 592364 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/48/ac/f3ce55a8106467aa858e762baebedb88631da6e3373c5689fb0260fbc53d/pulumi_cloudflare-5.45.0-py3-none-any.whl", hash = "sha256:d63001dc10a4cc2452996261fe1b3e059b254cc6f83149d3bd3bb041f4fe76b5", size = 856038 },
-]
-
-[[package]]
-name = "pulumi-command"
-version = "1.0.1"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "parver" },
-    { name = "pulumi" },
-    { name = "semver" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/dd/c0/a6304d7697a22cec1f71101613eb81fe5f98549c36040d40a5d0a9cc759e/pulumi_command-1.0.1.tar.gz", hash = "sha256:58e123707956aa7a9be2ce89c009642539cde5d9fa02e1e10501662600894843", size = 31532 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/ad/f1/a7616bc13081a110d8c2d0fe26c42249735154fa2732c86fab9ef8de0844/pulumi_command-1.0.1-py3-none-any.whl", hash = "sha256:672cdea9c0ced0f79ed47e578267a2b2160dcf88626dde34ee96f5524a003574", size = 34742 },
-]
-
-[[package]]
-name = "pulumi-docker"
-version = "4.5.8"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "parver" },
-    { name = "pulumi" },
-    { name = "semver" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/e3/58/6e206fd55be29799524e4a42e39bc2acc719c8d04feda58a9babd77e2ae3/pulumi_docker-4.5.8.tar.gz", hash = "sha256:f4e5ad528f9d2bed52c88e3ba62e051ef0da55c26b41c41f651da975b0adaf86", size = 90392 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/39/a4/3d295d2483ad7d05da8e8235e824c8ce75edb3bdaf5c707160ca95b9556e/pulumi_docker-4.5.8-py3-none-any.whl", hash = "sha256:bedc09f79b72514dbce7c721467880887b3f9d334ae8ea4a2399c6970c77e684", size = 110157 },
-]
-
-[[package]]
 name = "pulumi-kubernetes"
 version = "4.19.0"
 source = { registry = "https://pypi.org/simple" }
@@ -506,20 +456,6 @@ dependencies = [
     { name = "semver" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/2d/e3/15ba07147bf1ad602cd6234bb5ff09c29f9206d5ee0bf6845657c593264a/pulumi_onepassword-1.1.3.tar.gz", hash = "sha256:2ebbefa9463d8a9c6faf65491cad418c186d3a604360e78eaa319ef09c2478ba", size = 17968 }
-
-[[package]]
-name = "pulumi-random"
-version = "4.16.8"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "parver" },
-    { name = "pulumi" },
-    { name = "semver" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/d1/2c/681f1ac76133a6ebdf3b485006fc167a6a7fd9a7c3e82316158257ebcd79/pulumi_random-4.16.8.tar.gz", hash = "sha256:0112e10e3c8096b6e6fa05974bcefcf2f7731081035191860a2e7d6c0e4ef09f", size = 21172 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/c5/dc/6bb9083f6d00e94884cb7b312bfc45489993627caaca38c3e1476b3b68e1/pulumi_random-4.16.8-py3-none-any.whl", hash = "sha256:ba1b1fd6532988b1977e4bc8243d5b6f3c048c40f5919fcc70061088f37ebb51", size = 30811 },
-]
 
 [[package]]
 name = "pwdlib"
