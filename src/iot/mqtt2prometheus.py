@@ -53,7 +53,7 @@ class Mqtt2Prometheus(p.ComponentResource):
         for instance in component_config.mqtt2prometheus.instances:
             pvc = k8s.core.v1.PersistentVolumeClaim(
                 f'mosquitto-{instance.name}',
-                metadata={'name': 'mosquitto'},
+                metadata={'name': f'mosquitto-{instance.name}'},
                 spec={
                     'access_modes': ['ReadWriteOnce'],
                     'resources': {'requests': {'storage': '1Gi'}},
