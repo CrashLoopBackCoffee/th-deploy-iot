@@ -58,7 +58,14 @@ config:
               mqtt_name: restart_required
               help: Flag indicating that a restart is required
               type: gauge
-        - name: zigbee2mqtt
-          topic-path: "zigbee2mqtt/#"
-        - name: zwave
-          topic-path: "zwave/#"
+
+        - name: zwave-last-active
+          topic-path: "zwave/+/lastActive"
+          device-id-regex: "zwave/(?P<deviceid>.*?)/lastActive"
+          metrics:
+            - prom_name: zwave_last_active
+              mqtt_name: value
+              help: Last active time
+              type: gauge
+              const_labels:
+                sensor_type: zwave
