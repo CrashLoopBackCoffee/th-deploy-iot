@@ -11,12 +11,11 @@ component_config = ComponentConfig.model_validate(p.Config().get_object('config'
 config = p.Config()
 stack = p.get_stack()
 org = p.get_organization()
-minio_stack_ref = p.StackReference(f'{org}/s3/{stack}')
+minio_stack_ref = p.StackReference(f'{org}/s3/dev')
 
+docker_provider = docker.Provider('synology', host='ssh://synology')
 
-provider = docker.Provider('synology', host='ssh://synology')
-
-opts = p.ResourceOptions(provider=provider)
+opts = p.ResourceOptions(provider=docker_provider)
 
 cloudflare_provider = cloudflare.Provider(
     'cloudflare',
