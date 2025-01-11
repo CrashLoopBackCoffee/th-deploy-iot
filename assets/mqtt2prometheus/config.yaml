@@ -1,5 +1,5 @@
 mqtt:
-  server: tcp://mosquitto:1883
+  server: mqtts://mqtt.tobiash.net:8883
 
   client_id: mqtt-exporter
 

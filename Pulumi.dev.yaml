@@ -15,3 +15,7 @@ config:
     mqtt2prometheus:
       # renovate: datasource=github-releases packageName=hikhvar/mqtt2prometheus versioning=semver
       version: v0.1.7
+      username:
+        ref: op://Pulumi/Mosquitto/username
+      password:
+        ref: op://Pulumi/Mosquitto/password

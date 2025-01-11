@@ -7,3 +7,58 @@ config:
       passwords:
         # Generated via mosquitto_passwd using op://Pulumi/Mosquitto/password
         - iot:$7$101$Nd2Krv0tCk+QN75e$rCpqdQXzS6R3k714tuP7TD80t6vI3TNL4BeHFvBi3XdGYMbuib8W5gRKFaCF8HJWhhqU5z3rY/fFpQcq4FPxuQ==
+
+    mqtt2prometheus:
+      # renovate: datasource=github-releases packageName=hikhvar/mqtt2prometheus versioning=semver
+      version: v0.1.7
+      username:
+        ref: op://Pulumi/Mosquitto/username
+      password:
+        ref: op://Pulumi/Mosquitto/password
+      instances:
+        - name: shellies
+          topic-path: "home/shellies/#"
+          device-id-regex: "home/(.*?)/(?P<deviceid>.*?)/.*"
+          metrics:
+            - prom_name: mqtt_voltage
+              mqtt_name: voltage
+              help: Voltage reading
+              type: gauge
+
+            - prom_name: mqtt_current
+              mqtt_name: current
+              help: Current reading
+              type: gauge
+
+            - prom_name: mqtt_power
+              mqtt_name: apower
+              help: Power reading
+              type: gauge
+
+            - prom_name: mqtt_output
+              mqtt_name: output
+              help: Output state
+              type: gauge
+
+            - prom_name: mqtt_total_energy
+              mqtt_name: aenergy.total
+              help: Total energy used in Wh
+              type: counter
+              # TODO: When updated to next release
+              # force_monotonicy: true
+
+            - prom_name: mqtt_temperature
+              mqtt_name: temperature.tC
+              help: Temperature reading in °C
+              type: gauge
+              const_labels:
+                sensor_type: shelly
+
+            - prom_name: restart_required
+              mqtt_name: restart_required
+              help: Flag indicating that a restart is required
+              type: gauge
+        - name: zigbee2mqtt
+          topic-path: "zigbee2mqtt/#"
+        - name: zwave
+          topic-path: "zwave/#"

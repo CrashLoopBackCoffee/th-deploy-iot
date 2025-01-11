@@ -1,4 +1,5 @@
 import pathlib
+import typing as t
 
 import deploy_base.model
 import pydantic
@@ -34,8 +35,18 @@ class MosquittoConfig(StrictBaseModel):
     passwords: list[str] = []
 
 
+class MqttPrometheusInstanceConfig(StrictBaseModel):
+    name: str
+    topic_path: str = pydantic.Field(alias='topic-path')
+    device_id_regex: str | None = pydantic.Field(alias='device-id-regex', default=None)
+    metrics: list[dict[str, t.Any]] = []
+
+
 class MqttPrometheusConfig(StrictBaseModel):
     version: str
+    username: deploy_base.model.OnePasswordRef
+    password: deploy_base.model.OnePasswordRef
+    instances: list[MqttPrometheusInstanceConfig] = []
 
 
 class TargetConfig(StrictBaseModel):

@@ -3,6 +3,7 @@ import pulumi_kubernetes as k8s
 
 from iot.config import ComponentConfig
 from iot.mosquitto import Mosquitto
+from iot.mqtt2prometheus import Mqtt2Prometheus
 
 
 def main():
@@ -16,3 +17,5 @@ def main():
     k8s_provider = k8s.Provider('k8s', kubeconfig=k8s_stack_ref.get_output('kubeconfig'))
 
     Mosquitto('mosquitto', component_config, k8s_provider)
+
+    Mqtt2Prometheus('mqtt2prometheus', component_config, k8s_provider)
