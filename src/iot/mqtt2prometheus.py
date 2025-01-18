@@ -1,5 +1,6 @@
 import copy
 
+import deploy_base.opnsense.unbound.host_override
 import pulumi as p
 import pulumi_kubernetes as k8s
 import yaml
@@ -153,11 +154,21 @@ class Mqtt2Prometheus(p.ComponentResource):
                 opts=k8s_opts,
             )
 
+            # Create local DNS record
+            record = deploy_base.opnsense.unbound.host_override.HostOverride(
+                f'mqtt2prometheus-{instance.name}',
+                host=f'{instance.name}',
+                domain='mqtt2prometheus.local',
+                record_type='A',
+                ipaddress=service.status.apply(lambda x: x['load_balancer']['ingress'][0]['ip']),  # type: ignore
+            )
+
             p.export(
                 f'mqtt2prometheus-{instance.name}',
                 p.Output.format(
-                    'http://{}:{}/metrics',
-                    service.status['load_balancer']['ingress'][0]['ip'],
+                    '{}.{}:{}',
+                    record.host,
+                    record.domain,
                     EXPORTER_PORT,
                 ),
             )
