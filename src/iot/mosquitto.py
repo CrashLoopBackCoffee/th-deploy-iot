@@ -1,5 +1,7 @@
 import textwrap
 
+import deploy_base
+import deploy_base.opnsense.unbound.host_override
 import pulumi as p
 import pulumi_kubernetes as k8s
 
@@ -166,7 +168,14 @@ class Mosquitto(p.ComponentResource):
             opts=k8s_opts,
         )
 
-        # TODO: Configure DNS record in OpnSense when it arrived
+        deploy_base.opnsense.unbound.host_override.HostOverride(
+            'mosquitto',
+            host=component_config.mosquitto.hostname.split('.')[0],
+            domain=component_config.mosquitto.hostname.split('.', 1)[1],
+            record_type='A',
+            ipaddress=service.status.apply(lambda x: x['load_balancer']['ingress'][0]['ip']),  # type: ignore
+        )
+
         p.export(
             'mqtts_address',
             service.status.apply(lambda x: x['load_balancer']['ingress'][0]['ip']),  # type: ignore
