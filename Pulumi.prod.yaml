@@ -1,5 +1,8 @@
+encryptionsalt: v1:3koO6T2DEW4=:v1:iCE+kv7wNbotHVME:SxwbrIha5MYzRXBFMYlFZ9JwbTG6yA==
 config:
   iot:config:
+    kubeconfig:
+      ref: op://Pulumi/Kubeconfig prod/password
     mosquitto:
       # renovate: datasource=github-releases packageName=eclipse-mosquitto/mosquitto versioning=semver
       version: 2.0.19
