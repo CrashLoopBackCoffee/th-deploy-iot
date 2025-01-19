@@ -43,6 +43,7 @@ class MqttPrometheusConfig(StrictBaseModel):
 
 
 class ComponentConfig(StrictBaseModel):
+    kubeconfig: deploy_base.model.OnePasswordRef
     cloudflare: deploy_base.model.CloudflareConfig | None = None
     mosquitto: MosquittoConfig
     mqtt2prometheus: MqttPrometheusConfig
@@ -54,4 +55,5 @@ class StackConfig(StrictBaseModel):
 
 
 class PulumiConfigRoot(StrictBaseModel):
+    encryptionsalt: str | None
     config: StackConfig
